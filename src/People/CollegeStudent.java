@@ -160,6 +160,12 @@ public class CollegeStudent implements Person {
         System.out.println(this.getClassNum() + " " + this.getStudentID() + " " + this.getName());
     }
 
+
+    /**
+     * 格式化返回包含学生选课表和成绩信息的列表
+     *
+     * @return 学生选课表
+     */
     public ArrayList<String> check2String() {
         ArrayList<String> ret = new ArrayList<>();
         for (Map.Entry<Subject, Double> entry : subjects.entrySet()) {
@@ -168,27 +174,28 @@ public class CollegeStudent implements Person {
         return ret;
     }
 
-    public void writeStuInfo(FileOutputStream fos) throws IOException {
-        ArrayList<String> stu_info = this.check2String();
-        OutputStreamWriter osw = new OutputStreamWriter(fos);
-        BufferedWriter stu_info_wtr = new BufferedWriter(osw);
-        for (String str : stu_info) {
-            stu_info_wtr.write(str + "\r\n");
-        }
-        stu_info_wtr.close();
-        osw.close();
-    }
-
+    /**
+     * 更新该学生选课表文件
+     *
+     * @throws IOException
+     */
     public void updateStuInfo() throws IOException {
         File file = new File(getGradeListPath());
-        File dir=new File(file.getParent());
-        if(!dir.exists())
+        File dir = new File(file.getParent());
+        if (!dir.exists())
             dir.mkdirs();
-        if(file.exists())
+        if (file.exists())
             file.delete();
         file.createNewFile();
         FileOutputStream fos = new FileOutputStream(getGradeListPath());
-        writeStuInfo(fos);
+        ArrayList<String> stu_info = this.check2String();//获得学生选课表和成绩
+        OutputStreamWriter osw = new OutputStreamWriter(fos);
+        BufferedWriter stu_info_wtr = new BufferedWriter(osw);
+        for (String str : stu_info) {
+            stu_info_wtr.write(str + "\r\n");//逐行写入
+        }
+        stu_info_wtr.close();
+        osw.close();
         fos.close();
     }
 
@@ -229,10 +236,23 @@ public class CollegeStudent implements Person {
         ir_grade.close();
     }
 
+
+    /**
+     * 以字符串形式返回学生选课表路径
+     *
+     * @return 学生选课表路径
+     */
     public String getGradeListPath() {
         return "./data/" + getClassNum() + '/' + getStudentID() + ".txt";
     }
-    public String getInfo(){
-        return student_id+' '+name+' '+getClassNum()+"\r\n";
+
+    /**
+     * 以字符串形式返回学生信息。
+     * 学号 姓名 班级
+     *
+     * @return 该学生信息
+     */
+    public String getInfo() {
+        return student_id + ' ' + name + ' ' + getClassNum() + "\r\n";
     }
 }

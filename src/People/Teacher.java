@@ -1,5 +1,7 @@
 package People;
-import ClassStuff.*;
+
+import ClassStuff.Subject;
+
 /**
  * 该类表示老师，每个老师都任教一个学科，所以类内部有成员subjcet。
  * 字符串型成员name和id分别表示姓名和教师号。
@@ -95,6 +97,13 @@ public class Teacher implements Person {
         System.out.println(getId() + ' ' + getName() + ' ' + getSubject().getSubjectName());
     }
 
+
+    /**
+     * 以教师编号为主键的判等操作
+     *
+     * @param obj 比较对象
+     * @return true-相等 false-不相等
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -109,8 +118,15 @@ public class Teacher implements Person {
         }
     }
 
+
+    /**
+     * 以字符串形式返回教师信息
+     * 教师编号 姓名 任教科目编号
+     *
+     * @return 教师信息
+     */
     public String getInfo() {
-        return getId() + ' ' + getName() + ' ' + getSubject().getSubID()+"\r\n";
+        return getId() + ' ' + getName() + ' ' + getSubject().getSubID() + "\r\n";
     }
 }
 

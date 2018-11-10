@@ -5,6 +5,7 @@ package People;
  */
 public interface Person {
     void work();
+
     void check();
 
 }
