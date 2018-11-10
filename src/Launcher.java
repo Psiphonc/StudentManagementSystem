@@ -25,9 +25,14 @@ public class Launcher {
     static ArrayList<Class> classes = new ArrayList<Class>();
 
     public static void main(String[] args) {
+        begin();
+    }
+
+    public static void begin() {
         Scanner in = new Scanner(System.in);
         while (true) {
-            if (askStuOrTea()) {//询问用户以教师身份还是学生身份登陆系统
+            char op = askStuOrTea();
+            if (op == '1') {//询问用户以教师身份还是学生身份登陆系统
                 //如果用户是教师
                 do {
                     char optr = showTeacherList();//显示教师列表，并获取下一步操作
@@ -47,7 +52,7 @@ public class Launcher {
                         studentViewForTeacher(tea);//显示学生列表并询问下一步操作（添加学或打分）
                     }
                 } while (true);
-            } else {
+            } else if (op == '2') {
                 //若用户是学生
                 label:
                 do {
@@ -83,6 +88,8 @@ public class Launcher {
                             break;//返回上一层
                     }
                 } while (true);
+            } else {
+                break;
             }
         }
     }
@@ -322,20 +329,21 @@ public class Launcher {
     }
 
     /**
-     * 显示欢饮信息并询问用户以老师或学生身份登陆
+     * 显示欢迎信息并询问用户以老师或学生身份登陆
      *
-     * @return true-老师 false-学生
+     * @return 0-退出 1-老师 2-学生
      */
-    public static boolean askStuOrTea() {
+    public static char askStuOrTea() {
         Scanner in = new Scanner(System.in);
-        System.out.println("Welcome to student manage system,are you a teacher?(y/n)");
+        System.out.println("Welcome to student manage system!");
+        System.out.println("0 for save current statue and quit the system;");
+        System.out.println("1 stands for logging as a teacher;");
+        System.out.println("2 stands for logging as a student;");
         do {
             char c = in.nextLine().charAt(0);
             in.reset();
-            if (c == 'y')
-                return true;
-            else if (c == 'n')
-                return false;
+            if (c == '0' || c == '1' || c == '2')
+                return c;
             else
                 System.out.println("Only answer y/n!");
         } while (true);
