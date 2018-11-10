@@ -39,7 +39,7 @@ public class LauncherWithIO extends Launcher {
             readTeacherList();//读取教师列表
             for (Class cls : classes) {//为每个班级读取学生信息
                 try {
-                    cls.readStudent();
+                    cls.readStudent();//逐个读取班级内学生的信息
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
