@@ -38,8 +38,7 @@ public class Class {
     }
 
     /**
-     * 从该班级学生列表中添加学生
-     * 字节输入流->字符输入流->缓存字符输入流
+     * 向该班级学生列表中添加学生
      *
      * @throws IOException
      */
@@ -50,20 +49,26 @@ public class Class {
         String stu_info_detail;
         while ((stu_info_detail = stu_info.readLine()) != null) {
             if (stu_info_detail.startsWith("\uFEFF"))
-                stu_info_detail = stu_info_detail.replace("\uFEFF", "");
-            String[] stu_stripped_info = stu_info_detail.split(" ");
+                stu_info_detail = stu_info_detail.replace("\uFEFF", "");//删除windows行标支付
+            String[] stu_stripped_info = stu_info_detail.split(" ");//以空格为标记切片字符串
             CollegeStudent temp_stu = new CollegeStudent(stu_stripped_info);
-            if (students.indexOf(temp_stu) == -1) {
+            if (students.indexOf(temp_stu) == -1) {//检查该学生是否已经存在
                 addStudent(temp_stu);
             }
         }
         stu_info.close();
         isr.close();
         stu_list.close();
-        initClassList();
+        initGradeListForWholeClass();
     }
 
-    public void initClassList() throws IOException {
+    /**
+     * 为班级内学生逐个创建选课信息（成绩单）；
+     * 如果该学生选课列表已经存在，则直接读取选课信息。
+     *
+     * @throws IOException
+     */
+    public void initGradeListForWholeClass() throws IOException {
         for (CollegeStudent t_stu : students) {
             t_stu.createGradeList();
         }
@@ -115,10 +120,21 @@ public class Class {
         return getStudent(students.indexOf(new CollegeStudent(id)));
     }
 
-    private int getStuNum() {//return how much students are there in the class
+    /**
+     * 返回学生人数
+     *
+     * @return 学生的个数
+     */
+    public int getClaasSize() {
         return students.size();
     }
 
+
+    /**
+     * 返回该班级的班级号
+     *
+     * @return 班级号
+     */
     public String getClassNum() {
         return class_num;
     }
@@ -133,11 +149,11 @@ public class Class {
     public void printStuInfoInClass() {
         System.out.println("----------------------------------------");
         printClassInfo();
-        if (getStuNum() == 0) {
+        if (getClaasSize() == 0) {
             System.out.println("ClassStuff.Class is empty.");
         } else {
             System.out.print('\n');
-            for (int i = 0; i < getStuNum(); ++i) {
+            for (int i = 0; i < getClaasSize(); ++i) {
                 System.out.print(i + 1 + ".\t");
                 System.out.println(students.get(i).getStudentID() + ' ' + students.get(i).getName() + '\t');
                 //students.get(i).check();
@@ -151,7 +167,7 @@ public class Class {
      */
     public void printClassInfo() {
         System.out.println(
-                "Class:" + class_num + " Major:" + major_type[major] + " Number of students:" + getStuNum()
+                "Class:" + class_num + " Major:" + major_type[major] + " Number of students:" + getClaasSize()
         );
     }
 
@@ -173,11 +189,13 @@ public class Class {
         }
     }
 
-    public int getClassSize() {
-        return students.size();
-    }
 
-    public void writeStuInfoInClass() throws IOException {
+    /**
+     * 更新班级学生列表文件和学生选课信息文件
+     *
+     * @throws IOException
+     */
+    public void updateClassList() throws IOException {
         for (CollegeStudent stu : students) {
             File file = new File(getStudentListPath());
             if (file.exists())
@@ -187,8 +205,8 @@ public class Class {
             OutputStreamWriter osw = new OutputStreamWriter(fos);
             BufferedWriter info_wtr = new BufferedWriter(osw);
             try {
-                stu.updateStuInfo();
-                info_wtr.write(stu.getInfo());
+                stu.updateStuInfo();//逐个学生更新选课信息
+                info_wtr.write(stu.getInfo());//向班级名单文件中写入该学生信息
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -198,10 +216,21 @@ public class Class {
         }
     }
 
+    /**
+     * 格式化给出包含该班级信息的字符串
+     *
+     * @return 班级号和专业
+     */
     public String getInfo() {
-        return class_num + ' ' +major + "\r\n";
+        return class_num + ' ' + major + "\r\n";
     }
 
+
+    /**
+     * 返回该班级学生列表文件的路径字符串
+     *
+     * @return 学生列表文件的路径
+     */
     public String getStudentListPath() {
         return "./data/" + getClassNum() + ".txt";
     }

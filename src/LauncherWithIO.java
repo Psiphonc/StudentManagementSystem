@@ -93,9 +93,9 @@ public class LauncherWithIO extends Launcher {
         OutputStreamWriter osw = new OutputStreamWriter(fos);
         BufferedWriter info_wtr = new BufferedWriter(osw);
         for (Class item : classes) {//遍历班级列表
-            //item.writeStuInfoInClass();
-            info_wtr.write(item.getInfo());//写入班级信息
-            item.writeStuInfoInClass();//更新学生选课信息
+            //item.updateClassList();
+            info_wtr.write(item.getInfo());//向班级列表文件写入班级信息
+            item.updateClassList();//更新班级学生列表文件和学生选课信息文件
         }
         info_wtr.close();
         osw.close();

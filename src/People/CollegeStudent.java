@@ -192,26 +192,37 @@ public class CollegeStudent implements Person {
         fos.close();
     }
 
+    /**
+     * 为该学生创建选课（成绩）列表文件；
+     * 若文件已经存在，直接读取选课列表信息。
+     *
+     * @throws IOException
+     */
     public void createGradeList() throws IOException {
         File file = new File(getGradeListPath());
-        if (!file.exists())
-            file.createNewFile();
-        else {
+        if (!file.exists())//检查该学生选课列表是否存在
+            file.createNewFile();//创建选课列表
+        else {//若列表已经存在
             FileInputStream fis_grade = new FileInputStream(file.getPath());
-            readGradeFromList(fis_grade);
+            readGradeFromList(fis_grade);//读取该学生选课列表
             fis_grade.close();
         }
-
     }
 
+    /**
+     * 从选课表文件中读取该学生的选课信息
+     *
+     * @param fis_grade 包含该学生选课表信息的文件输入流
+     * @throws IOException
+     */
     public void readGradeFromList(FileInputStream fis_grade) throws IOException {
         InputStreamReader ir_grade = new InputStreamReader(fis_grade);
         BufferedReader br_grade_info = new BufferedReader(ir_grade);
         String grade_info;
         while ((grade_info = br_grade_info.readLine()) != null) {
             if (grade_info.startsWith("\uFEFF"))
-                grade_info = grade_info.replace("\uFEFF", "");
-            String[] kvps = grade_info.split(" ");
+                grade_info = grade_info.replace("\uFEFF", "");//去除行标
+            String[] kvps = grade_info.split(" ");//以空格为标志切片
             subjects.put(Subject.getSubject(kvps[0]), Double.parseDouble(kvps[1]));
         }
         br_grade_info.close();
