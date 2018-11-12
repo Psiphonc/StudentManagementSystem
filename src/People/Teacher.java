@@ -67,6 +67,7 @@ public class Teacher implements Person {
             throw new NumberFormatException();
         if (stu.subjects.containsKey(this.subject)) {//检查这个学生有没有选自己任教的课
             stu.subjects.put(this.subject, mark);
+            stu.updateAVG();
         } else {
             System.out.println("The student did not choose this course ");
         }

@@ -4,6 +4,7 @@ import People.CollegeStudent;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * 班级类，类内字符串型成员class_num代表班级号，是班级在判等时的主键。
@@ -196,24 +197,24 @@ public class Class {
      * @throws IOException
      */
     public void updateClassList() throws IOException {
+        File file = new File(getStudentListPath());
+        if (file.exists())
+            file.delete();
+        file.createNewFile();
+        FileOutputStream fos = new FileOutputStream(file.getPath());
+        OutputStreamWriter osw = new OutputStreamWriter(fos);
+        BufferedWriter info_wtr = new BufferedWriter(osw);
         for (CollegeStudent stu : students) {
-            File file = new File(getStudentListPath());
-            if (file.exists())
-                file.delete();
-            file.createNewFile();
-            FileOutputStream fos = new FileOutputStream(file.getPath());
-            OutputStreamWriter osw = new OutputStreamWriter(fos);
-            BufferedWriter info_wtr = new BufferedWriter(osw);
             try {
                 stu.updateStuInfo();//逐个学生更新选课信息
                 info_wtr.write(stu.getInfo());//向班级名单文件中写入该学生信息
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            info_wtr.close();
-            osw.close();
-            fos.close();
         }
+        info_wtr.close();
+        osw.close();
+        fos.close();
     }
 
     /**
@@ -235,4 +236,26 @@ public class Class {
         return "./data/" + getClassNum() + ".txt";
     }
 
+    /**
+     * 复制本班级的所有学生到一个新的列表中并按照平均成绩排序
+     *
+     * @return 有序班级学生列表
+     */
+    public ArrayList<CollegeStudent> getSortList() {
+        ArrayList<CollegeStudent> ret = (ArrayList<CollegeStudent>) students.clone();
+        ret.sort(Comparator.reverseOrder());
+        return ret;
+    }
+
+    /**
+     * 打印按照平均成绩排序的班级内学生列表
+     */
+    public void showSortedList() {
+        ArrayList<CollegeStudent> sortList = getSortList();
+        for (CollegeStudent stu : sortList) {
+            System.out.println(stu.getStudentID() + " " + stu.getName()
+                    + ' ' + stu.getAVG()
+            );
+        }
+    }
 }

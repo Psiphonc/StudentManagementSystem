@@ -19,14 +19,15 @@ public abstract class Subject {
     /**
      * 所有具体学科的数组
      */
-    public final static Subject[] subjects = new Subject[5];//学科数组
+    public final static Subject[] subjects = new Subject[6];//学科数组
 
     static {
-        subjects[0] = CSIntro.getInstance();
-        subjects[1] = DSA.getInstance();
-        subjects[2] = OperatingSystem.getInstance();
-        subjects[3] = JavaProgramming.getInstance();
-        subjects[4] = WebTechnology.getInstance();
+        subjects[0] = AVG.getInstance();
+        subjects[1] = CSIntro.getInstance();
+        subjects[2] = DSA.getInstance();
+        subjects[3] = OperatingSystem.getInstance();
+        subjects[4] = JavaProgramming.getInstance();
+        subjects[5] = WebTechnology.getInstance();
     }
 
     private final boolean elective;
@@ -49,7 +50,8 @@ public abstract class Subject {
      */
     public static void showSubList() {
         System.out.println("Here are all of subjects:");
-        for (Subject s : Subject.subjects) {
+        for (int i=1;i<subjects.length;++i) {
+            Subject s=subjects[i];
             System.out.println(s.getSubID() + " " + s.getSubjectName() + ' ' + s.students.size());
         }
     }

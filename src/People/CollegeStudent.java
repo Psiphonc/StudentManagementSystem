@@ -1,6 +1,7 @@
 package People;
 
 import ClassStuff.Subject;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.Map;
  * @see People.Person
  * @see ClassStuff.Subject
  */
-public class CollegeStudent implements Person {
+public class CollegeStudent implements Person,Comparable {
     /**
      * 课程表
      */
@@ -27,6 +28,7 @@ public class CollegeStudent implements Person {
     private String student_id;
     private String name;
     private String class_num;
+
 
     /**
      * 初始化学生信息，
@@ -42,8 +44,7 @@ public class CollegeStudent implements Person {
         setClassNum(class_num);
         for (Subject i : Subject.subjects) {//初始化学生课程表
             if (!i.isElective()) {//检查是否必修
-                subjects.put(i, 0.0);
-                i.addStudent(this);//把该学生添加到学科的学生列表中
+                addSubject(i);
             }
         }
     }
@@ -103,9 +104,10 @@ public class CollegeStudent implements Person {
     @Override
     public void check() {
         for (Map.Entry<Subject, Double> entry : subjects.entrySet()) {
-            System.out.println(
-                    entry.getKey().getSubID() + entry.getKey().getSubjectName() + "    " + entry.getValue()
-            );
+            if(entry.getKey()!=Subject.getSubject("AVG"))
+                System.out.println(
+                        entry.getKey().getSubID() + entry.getKey().getSubjectName() + "    " + entry.getValue()
+                );
         }
     }
 
@@ -127,9 +129,10 @@ public class CollegeStudent implements Person {
      * @param sbj 待选学科句柄
      */
     public void addSubject(Subject sbj) {
-        if (sbj.isElective() && !subjects.containsKey(sbj)) {//检查给出的参数学科是否可选和已经存在
+        if (!subjects.containsKey(sbj)) {//检查给出的参数学科是否可选和已经存在
             subjects.put(sbj, 0.0);
             sbj.addStudent(this);
+            updateAVG();
             //System.out.println(sbj.getSubID()+sbj.getSubjectName()+" added successfully.");
         }
     }
@@ -234,6 +237,7 @@ public class CollegeStudent implements Person {
         }
         br_grade_info.close();
         ir_grade.close();
+        updateAVG();
     }
 
 
@@ -254,5 +258,49 @@ public class CollegeStudent implements Person {
      */
     public String getInfo() {
         return student_id + ' ' + name + ' ' + getClassNum() + "\r\n";
+    }
+
+    /**
+     * 更新该学生当时的平均成绩（忽略分数为0的学科）
+     *
+     * @return 平均成绩
+     */
+    public double updateAVG() {
+        Subject sub_avg=Subject.getSubject("AVG");
+        if(!subjects.containsKey(sub_avg))
+            return 0.0;
+        subjects.put(sub_avg, 0.0);
+        Double avg = 0.0;
+        int sbj_cnt=0;
+        for (Double n : subjects.values()) {
+            if(n!=0.0)
+                sbj_cnt++;
+            avg += n;
+        }
+        avg /= sbj_cnt;
+        subjects.put(sub_avg,avg);
+        return avg;
+    }
+
+    /**
+     * 比较两个学生对象的平均成绩
+     *
+     * @param o 待比较对象
+     * @return 负整数-小于 0-等于 正整数-大于
+     */
+    @Override
+    public int compareTo(@NotNull Object o) {
+        CollegeStudent stu = (CollegeStudent) o;
+        return  this.subjects.get(Subject.getSubject("AVG")).intValue()
+                -stu.subjects.get(Subject.getSubject("AVG")).intValue();
+    }
+
+    /**
+     * 返回平均成绩
+     *
+     * @return 平均成绩
+     */
+    public double getAVG(){
+        return subjects.get(Subject.getSubject("AVG"));
     }
 }

@@ -129,7 +129,7 @@ public class Launcher {
      * @return 新创建或选择的学生
      */
     public static CollegeStudent studentViewForStudent(Class cls) {
-        cls.printStuInfoInClass();//打印该班级信息和其中所有学生
+        cls.showSortedList();//打印该班级信息和其中所有学生
         System.out.println("0 for add new student,student id for further manipulation:");
         Scanner in = new Scanner(System.in);
         CollegeStudent stu;
