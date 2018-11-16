@@ -1,7 +1,6 @@
 package People;
 
 import ClassStuff.Subject;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -289,7 +288,7 @@ public class CollegeStudent implements Person,Comparable {
      * @return 负整数-小于 0-等于 正整数-大于
      */
     @Override
-    public int compareTo(@NotNull Object o) {
+    public int compareTo(Object o) {
         CollegeStudent stu = (CollegeStudent) o;
         return  this.subjects.get(Subject.getSubject("AVG")).intValue()
                 -stu.subjects.get(Subject.getSubject("AVG")).intValue();
