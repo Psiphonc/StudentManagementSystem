@@ -303,4 +303,9 @@ public class CollegeStudent implements Person,Comparable {
     public double getAVG(){
         return subjects.get(Subject.getSubject("AVG"));
     }
+
+    @Override
+    public int hashCode() {
+        return getStudentID().hashCode();
+    }
 }
