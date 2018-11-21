@@ -27,6 +27,7 @@ public class CollegeStudent implements Person,Comparable {
     private String student_id;
     private String name;
     private String class_num;
+    private String password;
 
 
     /**
