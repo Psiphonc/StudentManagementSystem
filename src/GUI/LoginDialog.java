@@ -18,7 +18,6 @@ public class LoginDialog extends JDialog {
     private String id;
     private boolean teacher_flag = false;
 
-
     private JPanel contentPane;
     private JButton buttonLogin;
     private JButton buttonCancel;
@@ -106,7 +105,7 @@ public class LoginDialog extends JDialog {
                 id = stu.getStudentID();
                 teacher_flag = false;
                 showMessage("登陆成功！");
-                setVisible(false);
+                dispose();
             } else {
                 showMessage("密码错误！");
             }
