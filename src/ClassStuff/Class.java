@@ -1,5 +1,6 @@
 package ClassStuff;
 
+import GUI.StuRegisterDialog;
 import People.CollegeStudent;
 
 import java.io.*;
@@ -257,5 +258,8 @@ public class Class {
                     + ' ' + stu.getAVG()
             );
         }
+    }
+    public ArrayList<CollegeStudent> getStudents(){
+        return students;
     }
 }

@@ -2,8 +2,11 @@ package ClassStuff;
 
 import People.CollegeStudent;
 import People.Teacher;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * 这个抽象类代表学科，内部的一个静态数组subjects包含所有子类的唯一对象。
@@ -14,7 +17,7 @@ import java.util.ArrayList;
  *
  * @see ArrayList
  */
-public abstract class Subject {
+public abstract class Subject implements Comparable {
 
     /**
      * 所有具体学科的数组
@@ -138,4 +141,24 @@ public abstract class Subject {
         return getSubID().hashCode();
     }
 
+    @Override
+    public String toString() {
+        return getSubID()+' '+getSubjectName();
+    }
+
+    public static String[] getAvailableSubject(CollegeStudent stu){
+        ArrayList<Subject> sbjs = new ArrayList<>(Arrays.asList(subjects));
+        sbjs.removeAll(stu.getSubjects().keySet());
+        sbjs.remove(getSubject("AVG"));
+        String[] ret=new String[sbjs.size()];
+        for (int i = 0; i < ret.length; i++) {
+            ret[i]=sbjs.get(i).toString();
+        }
+        return ret;
+    }
+
+    @Override
+    public int compareTo(@NotNull Object o) {
+        return this.getSubID().compareTo(((Subject)o).getSubID());
+    }
 }

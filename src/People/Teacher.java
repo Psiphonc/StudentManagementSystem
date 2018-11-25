@@ -16,6 +16,7 @@ public class Teacher implements Person {
     private String name;
     private String id;
     private Subject subject;
+    private String password;
 
     /**
      * 根据给出的姓名、教师编号和任教学科构造教师对象，
@@ -31,6 +32,15 @@ public class Teacher implements Person {
         this.id = id;
         subject = sbj;
         sbj.setTeacher(this);
+    }
+
+    public Teacher(String name, String id, Subject subject, String password) {
+        this(name, id, subject);
+        this.password = password;
+    }
+
+    public Teacher(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -127,7 +137,11 @@ public class Teacher implements Person {
      * @return 教师信息
      */
     public String getInfo() {
-        return getId() + ' ' + getName() + ' ' + getSubject().getSubID() + "\r\n";
+        return getId() + ' ' + getName() + ' ' + getSubject().getSubID() + ' ' + password + "\r\n";
+    }
+
+    public String getPass(){
+        return password;
     }
 }
 

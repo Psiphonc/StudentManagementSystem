@@ -48,9 +48,10 @@ public class LauncherWithIO extends Launcher {
         } catch (IOException e) {
 //          e.printStackTrace();
         }
-
+        for (Class c:classes) {
+            students.addAll(c.getStudents());
+        }
     }
-
 
     /**
      * 通过给定班级列表文件新建班级并加入班级列表classes中
@@ -155,7 +156,7 @@ public class LauncherWithIO extends Launcher {
                 tea_info = tea_info.replace("\uFEFF", "");//去除windows行标识符
             }
             String[] tea_info_detail = tea_info.split(" ");//以空格为标志切片字符串
-            Teacher temp_tea = new Teacher(tea_info_detail[1], tea_info_detail[0], Subject.getSubject(tea_info_detail[2]));
+            Teacher temp_tea = new Teacher(tea_info_detail[1], tea_info_detail[0], Subject.getSubject(tea_info_detail[2]),tea_info_detail[3]);
             if (teachers.indexOf(temp_tea) == -1)//确认该教师原先不存在
                 teachers.add(temp_tea);
         }

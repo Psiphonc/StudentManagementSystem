@@ -19,7 +19,7 @@ public class JavaProgramming extends Subject {
 
     @Override
     public String getSubjectName() {
-        return "ClassStuff.JavaProgramming";
+        return "JavaProgramming";
     }
 
     @Override

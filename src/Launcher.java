@@ -18,11 +18,13 @@ public class Launcher {
     /**
      * 存放所有教师的数组
      */
-    static ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+    public static ArrayList<Teacher> teachers = new ArrayList<>();
     /**
      * 存放所有班级的数组
      */
-    static ArrayList<Class> classes = new ArrayList<Class>();
+    public static ArrayList<Class> classes = new ArrayList<>();
+
+    public static ArrayList<CollegeStudent> students= new ArrayList<>();
 
     public static void main(String[] args) {
         begin();

@@ -19,7 +19,7 @@ import java.util.Map;
  * @see People.Person
  * @see ClassStuff.Subject
  */
-public class CollegeStudent implements Person,Comparable {
+public class CollegeStudent implements Person, Comparable {
     /**
      * 课程表
      */
@@ -49,8 +49,13 @@ public class CollegeStudent implements Person,Comparable {
         }
     }
 
+    public CollegeStudent(String student_id, String name, String class_num, String password) {
+        this(student_id, name, class_num);
+        this.password = password;
+    }
+
     public CollegeStudent(String[] stu_info_array) {
-        this(stu_info_array[0], stu_info_array[1], stu_info_array[2]);
+        this(stu_info_array[0], stu_info_array[1], stu_info_array[2], stu_info_array[3]);
     }
 
     /**
@@ -104,7 +109,7 @@ public class CollegeStudent implements Person,Comparable {
     @Override
     public void check() {
         for (Map.Entry<Subject, Double> entry : subjects.entrySet()) {
-            if(entry.getKey()!=Subject.getSubject("AVG"))
+            if (entry.getKey() != Subject.getSubject("AVG"))
                 System.out.println(
                         entry.getKey().getSubID() + entry.getKey().getSubjectName() + "    " + entry.getValue()
                 );
@@ -257,7 +262,7 @@ public class CollegeStudent implements Person,Comparable {
      * @return 该学生信息
      */
     public String getInfo() {
-        return student_id + ' ' + name + ' ' + getClassNum() + "\r\n";
+        return student_id + ' ' + name + ' ' + getClassNum() + ' ' + password + "\r\n";
     }
 
     /**
@@ -266,19 +271,19 @@ public class CollegeStudent implements Person,Comparable {
      * @return 平均成绩
      */
     public double updateAVG() {
-        Subject sub_avg=Subject.getSubject("AVG");
-        if(!subjects.containsKey(sub_avg))
+        Subject sub_avg = Subject.getSubject("AVG");
+        if (!subjects.containsKey(sub_avg))
             return 0.0;
         subjects.put(sub_avg, 0.0);
         Double avg = 0.0;
-        int sbj_cnt=0;
+        int sbj_cnt = 0;
         for (Double n : subjects.values()) {
-            if(n!=0.0)
+            if (n != 0.0)
                 sbj_cnt++;
             avg += n;
         }
         avg /= sbj_cnt;
-        subjects.put(sub_avg,avg);
+        subjects.put(sub_avg, avg);
         return avg;
     }
 
@@ -291,8 +296,8 @@ public class CollegeStudent implements Person,Comparable {
     @Override
     public int compareTo(Object o) {
         CollegeStudent stu = (CollegeStudent) o;
-        return  this.subjects.get(Subject.getSubject("AVG")).intValue()
-                -stu.subjects.get(Subject.getSubject("AVG")).intValue();
+        return this.subjects.get(Subject.getSubject("AVG")).intValue()
+                - stu.subjects.get(Subject.getSubject("AVG")).intValue();
     }
 
     /**
@@ -300,12 +305,20 @@ public class CollegeStudent implements Person,Comparable {
      *
      * @return 平均成绩
      */
-    public double getAVG(){
+    public double getAVG() {
         return subjects.get(Subject.getSubject("AVG"));
     }
 
     @Override
     public int hashCode() {
         return getStudentID().hashCode();
+    }
+
+    public String getPassword(){return password;}
+
+    public HashMap<Subject, Double> getSubjects() {
+        HashMap<Subject,Double> ret = (HashMap<Subject,Double>)subjects.clone();
+        ret.remove(Subject.getSubject("AVG"));
+        return ret;
     }
 }
