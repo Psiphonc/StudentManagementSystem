@@ -7,9 +7,7 @@ import People.Teacher;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class LoginDialog extends JDialog {
@@ -40,6 +38,31 @@ public class LoginDialog extends JDialog {
         buttonLogin.addActionListener(e -> onLogin());
         buttonCancel.addActionListener(e -> onCancel());
         buttonRigister.addActionListener(e -> onRigister());
+
+        administratorRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (administratorRadioButton.isSelected()) {
+                    buttonRigister.setEnabled(false);
+                }
+            }
+        });
+        studentRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (studentRadioButton.isSelected()) {
+                    buttonRigister.setEnabled(true);
+                }
+            }
+        });
+        teacherRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (teacherRadioButton.isSelected()) {
+                    buttonRigister.setEnabled(true);
+                }
+            }
+        });
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
