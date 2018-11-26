@@ -36,7 +36,6 @@ public class LauncherWithIO extends Launcher {
     public static void init() {
         try {
             readClass();//读取班级
-            readTeacherList();//读取教师列表
             for (Class cls : classes) {//为每个班级读取学生信息
                 try {
                     cls.readStudent();//逐个读取班级内学生的信息
@@ -45,6 +44,7 @@ public class LauncherWithIO extends Launcher {
                 }
 //              cls.printStuInfoInClass();
             }
+            readTeacherList();//读取教师列表
         } catch (IOException e) {
 //          e.printStackTrace();
         }
@@ -156,7 +156,7 @@ public class LauncherWithIO extends Launcher {
                 tea_info = tea_info.replace("\uFEFF", "");//去除windows行标识符
             }
             String[] tea_info_detail = tea_info.split(" ");//以空格为标志切片字符串
-            Teacher temp_tea = new Teacher(tea_info_detail[1], tea_info_detail[0], Subject.getSubject(tea_info_detail[2]),tea_info_detail[3]);
+            Teacher temp_tea = new Teacher(tea_info_detail[1], tea_info_detail[0], Subject.getSubject(tea_info_detail[2]), tea_info_detail[3], tea_info_detail[4]);
             if (teachers.indexOf(temp_tea) == -1)//确认该教师原先不存在
                 teachers.add(temp_tea);
         }

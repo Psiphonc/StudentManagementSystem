@@ -1,6 +1,5 @@
 package ClassStuff;
 
-import GUI.StuRegisterDialog;
 import People.CollegeStudent;
 
 import java.io.*;
@@ -259,7 +258,8 @@ public class Class {
             );
         }
     }
-    public ArrayList<CollegeStudent> getStudents(){
+
+    public ArrayList<CollegeStudent> getStudents() {
         return students;
     }
 }

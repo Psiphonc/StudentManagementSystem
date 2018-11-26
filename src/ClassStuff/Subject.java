@@ -6,7 +6,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 
 /**
  * 这个抽象类代表学科，内部的一个静态数组subjects包含所有子类的唯一对象。
@@ -39,6 +38,7 @@ public abstract class Subject implements Comparable {
      */
     public ArrayList<CollegeStudent> students = new ArrayList<>();
     private Teacher teacher;
+    private CollegeStudent admin;
 
     /**
      * 子类继承时必须给出课程是否为选修课
@@ -53,8 +53,8 @@ public abstract class Subject implements Comparable {
      */
     public static void showSubList() {
         System.out.println("Here are all of subjects:");
-        for (int i=1;i<subjects.length;++i) {
-            Subject s=subjects[i];
+        for (int i = 1; i < subjects.length; ++i) {
+            Subject s = subjects[i];
             System.out.println(s.getSubID() + " " + s.getSubjectName() + ' ' + s.students.size());
         }
     }
@@ -141,24 +141,40 @@ public abstract class Subject implements Comparable {
         return getSubID().hashCode();
     }
 
-    @Override
-    public String toString() {
-        return getSubID()+' '+getSubjectName();
-    }
-
-    public static String[] getAvailableSubject(CollegeStudent stu){
+    public static String[] getAvailableSubject(CollegeStudent stu) {
         ArrayList<Subject> sbjs = new ArrayList<>(Arrays.asList(subjects));
         sbjs.removeAll(stu.getSubjects().keySet());
         sbjs.remove(getSubject("AVG"));
-        String[] ret=new String[sbjs.size()];
+        String[] ret = new String[sbjs.size()];
         for (int i = 0; i < ret.length; i++) {
-            ret[i]=sbjs.get(i).toString();
+            ret[i] = sbjs.get(i).toString();
         }
         return ret;
     }
 
     @Override
+    public String toString() {
+        return getSubID() + ' ' + getSubjectName();
+    }
+
+    @Override
     public int compareTo(@NotNull Object o) {
-        return this.getSubID().compareTo(((Subject)o).getSubID());
+        return this.getSubID().compareTo(((Subject) o).getSubID());
+    }
+
+    public int getStudentNum() {
+        return students.size();
+    }
+
+    public ArrayList<CollegeStudent> getStudents() {
+        return students;
+    }
+
+    public CollegeStudent getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(CollegeStudent admin) {
+        this.admin = admin;
     }
 }

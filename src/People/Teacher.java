@@ -34,10 +34,12 @@ public class Teacher implements Person {
         sbj.setTeacher(this);
     }
 
-    public Teacher(String name, String id, Subject subject, String password) {
+    public Teacher(String name, String id, Subject subject, String password, String admin) {
         this(name, id, subject);
         this.password = password;
+        grantAdmin(admin);
     }
+
 
     public Teacher(String id) {
         this.id = id;
@@ -137,11 +139,28 @@ public class Teacher implements Person {
      * @return 教师信息
      */
     public String getInfo() {
-        return getId() + ' ' + getName() + ' ' + getSubject().getSubID() + ' ' + password + "\r\n";
+        return getId() + ' ' + getName() + ' ' +
+                getSubject().getSubID() + ' ' + password +
+                ' ' + getAdmin() + "\r\n";
     }
 
-    public String getPass(){
+    public String getPass() {
         return password;
+    }
+
+    public void grantAdmin(String stu_id) {
+        if (stu_id.equals(""))
+            return;
+        int idx = subject.getStudents().indexOf(new CollegeStudent(stu_id));
+        subject.setAdmin(subject.getStudents().get(idx));
+    }
+
+    public String getAdmin() {
+        CollegeStudent t_stu = subject.getAdmin();
+        String ret = "";
+        if (t_stu != null)
+            ret = t_stu.getStudentID();
+        return ret;
     }
 }
 

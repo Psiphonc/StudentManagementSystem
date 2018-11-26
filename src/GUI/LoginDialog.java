@@ -1,6 +1,7 @@
 package GUI;
 
 import ClassStuff.Class;
+import ClassStuff.Subject;
 import People.CollegeStudent;
 import People.Teacher;
 
@@ -16,7 +17,7 @@ public class LoginDialog extends JDialog {
     private ArrayList<CollegeStudent> students;
     private ArrayList<Teacher> teachers;
     private String id;
-    private boolean teacher_flag = false;
+    private int login_type = 1;
 
     private JPanel contentPane;
     private JButton buttonLogin;
@@ -26,6 +27,7 @@ public class LoginDialog extends JDialog {
     private JButton buttonRigister;
     private JTextField accTextField;
     private JPasswordField passTextField;
+    private JRadioButton administratorRadioButton;
 
     public LoginDialog(Frame owner) {
         super(owner);
@@ -87,14 +89,14 @@ public class LoginDialog extends JDialog {
             Teacher tea = teachers.get(idx);
             if (tea.getPass().equals(pass)) {
                 id = tea.getId();
-                teacher_flag = true;
+                login_type = 0;
                 showMessage("登陆成功！");
-                setVisible(false);
+                dispose();
             } else {
                 showMessage("密码错误！");
             }
 
-        } else {
+        } else if (studentRadioButton.isSelected()) {
             int idx = students.indexOf(new CollegeStudent(acc));
             if (idx == -1) {
                 showMessage("该账号不存在");
@@ -103,13 +105,21 @@ public class LoginDialog extends JDialog {
             CollegeStudent stu = students.get(idx);
             if (stu.getPassword().equals(pass)) {
                 id = stu.getStudentID();
-                teacher_flag = false;
+                login_type = 1;
                 showMessage("登陆成功！");
                 dispose();
             } else {
                 showMessage("密码错误！");
             }
-
+        } else {
+            Subject subject = Subject.getSubject(acc);
+            if (subject != null && subject.getAdmin().getPassword().equals(pass)) {
+                login_type = 2;
+                showMessage("登陆成功！");
+                dispose();
+            } else {
+                showMessage("密码错误！");
+            }
         }
     }
 
@@ -118,8 +128,8 @@ public class LoginDialog extends JDialog {
         System.exit(0);
     }
 
-    public boolean isTeacher() {
-        return teacher_flag;
+    public int getLoginType() {
+        return login_type;
     }
 
     public String getId() {
@@ -137,12 +147,5 @@ public class LoginDialog extends JDialog {
         return "";
     }
 
-    public void clear() {
-        studentRadioButton.setSelected(true);
-        teacher_flag=false;
-        accTextField.setText("");
-        passTextField.setText("");
-        id="";
-    }
 
 }

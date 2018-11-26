@@ -6,11 +6,12 @@ import People.CollegeStudent;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class StudentViewFrame extends JFrame {
-    CollegeStudent student;
+    private CollegeStudent student;
 
     private JLabel nameLabel;
     private JLabel idLabel;
@@ -33,10 +34,15 @@ public class StudentViewFrame extends JFrame {
         AddSubjectAction addSubjectAction = new AddSubjectAction();
         addSubjectButton.addActionListener(addSubjectAction);
 
-        logoutButton.addActionListener(e -> dispose());
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         setContentPane(framePnl);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         pack();
         setVisible(true);
     }
@@ -68,7 +74,7 @@ public class StudentViewFrame extends JFrame {
             } else if (columnIndex == 1)
                 ret = ((Subject) subjects[rowIndex]).getSubjectName();
             else if (columnIndex == 2)
-                ret = grade_list.get(((Subject) subjects[rowIndex])).toString();
+                ret = grade_list.get(subjects[rowIndex]).toString();
             return ret;
         }
 

@@ -70,7 +70,7 @@ public class TeacherRigisterDialog extends JDialog {
         }
         String[] sub = ((String) subComboBox.getSelectedItem()).split(" ");
         Subject selected_subject = Subject.getSubject(sub[0]);
-        teachers.add(new Teacher(name,teacherid,selected_subject,pass));
+        teachers.add(new Teacher(name, teacherid, selected_subject, pass, ""));
         JOptionPane.showMessageDialog(contentPane, "注册成功！");
         dispose();
     }
