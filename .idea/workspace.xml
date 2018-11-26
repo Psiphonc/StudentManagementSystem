@@ -13,11 +13,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87470cc4-faa8-4948-9a23-a6aec98f58ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/release.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StudentManageSystem/People/CollegeStudent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StudentManageSystem/People/CollegeStudent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/LoginDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/LoginDialog.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/LoginDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/StuRegisterDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/StuRegisterDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/TeacherRigisterDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/TeacherRegisterDialog.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/TeacherRigisterDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/TeacherRegisterDialog.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -130,27 +132,27 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
-          <entry key="java" value="14915" />
-          <entry key="txt" value="677" />
+          <entry key="java" value="14922" />
+          <entry key="txt" value="778" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="14915" />
-          <entry key="PLAIN_TEXT" value="680" />
+          <entry key="JAVA" value="14922" />
+          <entry key="PLAIN_TEXT" value="781" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="form" value="29" />
-          <entry key="java" value="113" />
+          <entry key="java" value="115" />
           <entry key="txt" value="63" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="GUI_DESIGNER_FORM" value="29" />
-          <entry key="JAVA" value="113" />
+          <entry key="JAVA" value="115" />
           <entry key="PLAIN_TEXT" value="63" />
         </counts>
       </usages-collector>
@@ -183,8 +185,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/LoginDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1166">
-              <caret line="61" column="50" selection-start-line="61" selection-start-column="50" selection-end-line="61" selection-end-column="50" />
+            <state relative-caret-position="108">
+              <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
               <folding>
                 <element signature="e#1688#1816#0" expanded="true" />
                 <element signature="e#1815#1816#0" expanded="true" />
@@ -200,13 +202,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/SubjectAdminView.java">
+        <entry file="file://$PROJECT_DIR$/src/GUI/TeacherRegisterDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4224">
-              <caret line="206" column="17" selection-start-line="206" selection-start-column="17" selection-end-line="206" selection-end-column="17" />
+            <state relative-caret-position="20">
+              <caret line="85" column="9" lean-forward="true" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/SubjectAdminView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3014">
+              <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -228,8 +239,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LauncherWithIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
+            <state relative-caret-position="646">
               <caret line="163" selection-start-line="163" selection-end-line="163" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/StuRegisterDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -247,10 +267,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/TeacherViewFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
+            <state relative-caret-position="-528">
               <caret line="6" column="44" lean-forward="true" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
             </state>
           </provider>
@@ -333,7 +353,6 @@
         <option value="$PROJECT_DIR$/data/2016167.txt" />
         <option value="$PROJECT_DIR$/src/GUI/Login.java" />
         <option value="$PROJECT_DIR$/src/GUI/TeacherRigisterDialog.form" />
-        <option value="$PROJECT_DIR$/src/GUI/StuRegisterDialog.java" />
         <option value="$PROJECT_DIR$/src/ClassStuff/JavaProgramming.java" />
         <option value="$PROJECT_DIR$/src/ClassStuff/Class.java" />
         <option value="$PROJECT_DIR$/src/GUI/StudentViewFrame.form" />
@@ -353,6 +372,8 @@
         <option value="$PROJECT_DIR$/src/GUI/SubjectAdminView.java" />
         <option value="$PROJECT_DIR$/src/People/CollegeStudent.java" />
         <option value="$PROJECT_DIR$/src/GUI/LoginDialog.java" />
+        <option value="$PROJECT_DIR$/src/GUI/TeacherRegisterDialog.java" />
+        <option value="$PROJECT_DIR$/src/GUI/StuRegisterDialog.java" />
       </list>
     </option>
   </component>
@@ -491,6 +512,20 @@
               <item name="StudentManagementSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="StudentManagementSystem" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+              <item name="StuRegisterDialog" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="StudentManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StudentManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+              <item name="TeacherRegisterDialog" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="StudentManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StudentManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="People" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -624,7 +659,7 @@
       <workItem from="1542895861397" duration="881000" />
       <workItem from="1543134500951" duration="20284000" />
       <workItem from="1543206979291" duration="19940000" />
-      <workItem from="1543236272286" duration="1264000" />
+      <workItem from="1543236272286" duration="1516000" />
     </task>
     <task id="LOCAL-00001" summary="&#10;&#10;First Version Create in Nov 5 2018">
       <created>1541424672494</created>
@@ -808,11 +843,18 @@
       <option name="project" value="LOCAL" />
       <updated>1543229710338</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Fixed a bug which register button still available when Radio button Administrator is selected.">
+      <created>1543239494138</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1543239494138</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135375000" />
+    <option name="totallyTimeSpent" value="135627000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -827,7 +869,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14812332" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14812332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -836,7 +878,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32765958" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42411348" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.42411348" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39858156" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -919,7 +961,8 @@
     <MESSAGE value="Save status when exited" />
     <MESSAGE value="Subject administrator workspace added;&#10;fixed a I/O bug which causes student list in subject initialized failed." />
     <MESSAGE value="Fixed a bug that causes a student item shows in subject's student list 2 times." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug that causes a student item shows in subject's student list 2 times." />
+    <MESSAGE value="Fixed a bug which register button still available when Radio button Administrator is selected." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug which register button still available when Radio button Administrator is selected." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -953,13 +996,6 @@
     <entry file="file://$PROJECT_DIR$/src/GUI/Login.java" />
     <entry file="file://$PROJECT_DIR$/src/GUI/StuRegisterDialog.form">
       <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/StuRegisterDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-        </state>
-      </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Component.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1021,7 +1057,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/TeacherRigisterDialog.form">
+    <entry file="file://$PROJECT_DIR$/src/GUI/TeacherRegisterDialog.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/TeacherViewFrame.form">
@@ -1079,16 +1115,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="234" column="18" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/TeacherRigisterDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="84" column="44" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1246,30 +1272,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/LoginDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/People/Teacher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1166">
-          <caret line="61" column="50" selection-start-line="61" selection-start-column="50" selection-end-line="61" selection-end-column="50" />
+        <state relative-caret-position="118">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
-            <element signature="e#1688#1816#0" expanded="true" />
-            <element signature="e#1815#1816#0" expanded="true" />
-            <element signature="e#4560#4561#0" expanded="true" />
-            <element signature="e#4593#4594#0" expanded="true" />
-            <element signature="e#4622#4623#0" expanded="true" />
-            <element signature="e#4647#4648#0" expanded="true" />
-            <element signature="e#4689#4690#0" expanded="true" />
-            <element signature="e#4750#4751#0" expanded="true" />
+            <element signature="e#1126#1127#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/TeacherViewFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-528">
+          <caret line="6" column="44" lean-forward="true" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/SubjectAdminView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4224">
-          <caret line="206" column="17" selection-start-line="206" selection-start-column="17" selection-end-line="206" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-3014">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1285,28 +1309,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LauncherWithIO.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/LoginDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="163" selection-start-line="163" selection-end-line="163" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/People/Teacher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="108">
+          <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
           <folding>
-            <element signature="e#1126#1127#0" expanded="true" />
-            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#1688#1816#0" expanded="true" />
+            <element signature="e#1815#1816#0" expanded="true" />
+            <element signature="e#4560#4561#0" expanded="true" />
+            <element signature="e#4593#4594#0" expanded="true" />
+            <element signature="e#4622#4623#0" expanded="true" />
+            <element signature="e#4647#4648#0" expanded="true" />
+            <element signature="e#4689#4690#0" expanded="true" />
+            <element signature="e#4750#4751#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/TeacherViewFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/TeacherRegisterDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="44" lean-forward="true" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+        <state relative-caret-position="20">
+          <caret line="85" column="9" lean-forward="true" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LauncherWithIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="163" selection-start-line="163" selection-end-line="163" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/StuRegisterDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
         </state>
       </provider>
     </entry>

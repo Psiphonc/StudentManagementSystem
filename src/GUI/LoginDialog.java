@@ -22,7 +22,7 @@ public class LoginDialog extends JDialog {
     private JButton buttonCancel;
     private JRadioButton studentRadioButton;
     private JRadioButton teacherRadioButton;
-    private JButton buttonRigister;
+    private JButton buttonRegister;
     private JTextField accTextField;
     private JPasswordField passTextField;
     private JRadioButton administratorRadioButton;
@@ -37,13 +37,13 @@ public class LoginDialog extends JDialog {
 
         buttonLogin.addActionListener(e -> onLogin());
         buttonCancel.addActionListener(e -> onCancel());
-        buttonRigister.addActionListener(e -> onRigister());
+        buttonRegister.addActionListener(e -> onRegister());
 
         administratorRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (administratorRadioButton.isSelected()) {
-                    buttonRigister.setEnabled(false);
+                    buttonRegister.setEnabled(false);
                 }
             }
         });
@@ -51,7 +51,7 @@ public class LoginDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (studentRadioButton.isSelected()) {
-                    buttonRigister.setEnabled(true);
+                    buttonRegister.setEnabled(true);
                 }
             }
         });
@@ -59,7 +59,7 @@ public class LoginDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (teacherRadioButton.isSelected()) {
-                    buttonRigister.setEnabled(true);
+                    buttonRegister.setEnabled(true);
                 }
             }
         });
@@ -83,15 +83,15 @@ public class LoginDialog extends JDialog {
         this.teachers = teachers;
     }
 
-    private void onRigister() {
+    private void onRegister() {
         if (studentRadioButton.isSelected()) {
             StuRegisterDialog stuRegisterDialog = new StuRegisterDialog(classes, students);
             stuRegisterDialog.pack();
             stuRegisterDialog.setVisible(true);
         } else {
-            TeacherRigisterDialog teacherRigisterDialog = new TeacherRigisterDialog(teachers);
-            teacherRigisterDialog.pack();
-            teacherRigisterDialog.setVisible(true);
+            TeacherRegisterDialog teacherRegisterDialog = new TeacherRegisterDialog(teachers);
+            teacherRegisterDialog.pack();
+            teacherRegisterDialog.setVisible(true);
         }
     }
 

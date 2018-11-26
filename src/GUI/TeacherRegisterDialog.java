@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class TeacherRigisterDialog extends JDialog {
+public class TeacherRegisterDialog extends JDialog {
     ArrayList<Teacher> teachers;
 
     private JPanel contentPane;
@@ -18,12 +18,12 @@ public class TeacherRigisterDialog extends JDialog {
     private JTextField nameField;
     private JComboBox<String> subComboBox;
 
-    public TeacherRigisterDialog(ArrayList<Teacher> teachers) {
+    public TeacherRegisterDialog(ArrayList<Teacher> teachers) {
         this();
         this.teachers = teachers;
     }
 
-    public TeacherRigisterDialog() {
+    public TeacherRegisterDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonRigister);
@@ -87,7 +87,7 @@ public class TeacherRigisterDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        TeacherRigisterDialog dialog = new TeacherRigisterDialog();
+        TeacherRegisterDialog dialog = new TeacherRegisterDialog();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

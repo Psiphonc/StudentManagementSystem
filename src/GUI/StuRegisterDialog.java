@@ -34,7 +34,7 @@ public class StuRegisterDialog extends JDialog {
 
         buttonRegister.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onRigister();
+                onRegister();
             }
         });
 
@@ -64,7 +64,7 @@ public class StuRegisterDialog extends JDialog {
         setLocationByPlatform(true);
     }
 
-    private void onRigister() {
+    private void onRegister() {
         String id = idTextField.getText();
         String name = nameField.getText();
         String pass = new String(passwordField.getPassword());
