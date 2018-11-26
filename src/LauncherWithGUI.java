@@ -16,7 +16,16 @@ public class LauncherWithGUI extends LauncherWithIO {
     public static void main(String[] args) {
         init();
         EventQueue.invokeLater(new setupLoginTread());
-
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                System.out.println("165465");
+                try {
+                    updateInfo();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
 
@@ -66,16 +75,6 @@ public class LauncherWithGUI extends LauncherWithIO {
         @Override
         public void windowClosed(WindowEvent e) {
             EventQueue.invokeLater(new setupLoginTread());
-        }
-
-        @Override
-        public void windowClosing(WindowEvent e) {
-            super.windowClosing(e);
-            try {
-                updateInfo();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
         }
     }
 }
