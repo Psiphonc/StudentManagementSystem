@@ -241,7 +241,8 @@ public class CollegeStudent implements Person, Comparable {
             Subject sbj = Subject.getSubject(kvps[0]);
             double grade = Double.parseDouble(kvps[1]);
             subjects.put(sbj, grade);
-            sbj.addStudent(this);
+            if (sbj.students.indexOf(this) == -1)
+                sbj.addStudent(this);
         }
         br_grade_info.close();
         ir_grade.close();
