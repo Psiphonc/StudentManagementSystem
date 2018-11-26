@@ -44,12 +44,17 @@ public class LauncherWithIO extends Launcher {
                 }
 //              cls.printStuInfoInClass();
             }
-            readTeacherList();//读取教师列表
+
         } catch (IOException e) {
 //          e.printStackTrace();
         }
         for (Class c:classes) {
             students.addAll(c.getStudents());
+        }
+        try {
+            readTeacherList();//读取教师列表
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

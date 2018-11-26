@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class TeacherViewFrame extends JFrame {
@@ -39,6 +40,9 @@ public class TeacherViewFrame extends JFrame {
         adminLabel.setText(teacher.getAdmin());
         teacherContentTableModel = new TeacherContentTableModel();
         contentTable.setModel(teacherContentTableModel);
+        for (MouseListener listener : contentTable.getTableHeader().getMouseListeners()) {
+            contentTable.getTableHeader().removeMouseListener(listener);
+        }
         contentTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {

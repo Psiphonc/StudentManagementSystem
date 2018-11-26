@@ -238,7 +238,10 @@ public class CollegeStudent implements Person, Comparable {
             if (grade_info.startsWith("\uFEFF"))
                 grade_info = grade_info.replace("\uFEFF", "");//去除行标
             String[] kvps = grade_info.split(" ");//以空格为标志切片
-            subjects.put(Subject.getSubject(kvps[0]), Double.parseDouble(kvps[1]));
+            Subject sbj = Subject.getSubject(kvps[0]);
+            double grade = Double.parseDouble(kvps[1]);
+            subjects.put(sbj, grade);
+            sbj.addStudent(this);
         }
         br_grade_info.close();
         ir_grade.close();

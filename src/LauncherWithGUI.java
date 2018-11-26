@@ -1,5 +1,7 @@
+import ClassStuff.Subject;
 import GUI.LoginDialog;
 import GUI.StudentViewFrame;
+import GUI.SubjectAdminView;
 import GUI.TeacherViewFrame;
 import People.CollegeStudent;
 import People.Teacher;
@@ -18,7 +20,6 @@ public class LauncherWithGUI extends LauncherWithIO {
         EventQueue.invokeLater(new setupLoginTread());
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
-                System.out.println("165465");
                 try {
                     updateInfo();
                 } catch (IOException e) {
@@ -56,12 +57,15 @@ public class LauncherWithGUI extends LauncherWithIO {
                             break;
                         }
                         case 2: {
-
+                            SubjectAdminView subjectAdminView = new SubjectAdminView(Subject.getSubject(id), students);
+                            subjectAdminView.addWindowFocusListener(new WhenWindowClose());
+                            break;
                         }
                     }
                 }
             });
             login.pack();
+
             login.setVisible(true);
         }
 

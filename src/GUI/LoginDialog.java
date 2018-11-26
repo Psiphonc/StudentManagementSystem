@@ -114,6 +114,7 @@ public class LoginDialog extends JDialog {
         } else {
             Subject subject = Subject.getSubject(acc);
             if (subject != null && subject.getAdmin().getPassword().equals(pass)) {
+                id = acc;
                 login_type = 2;
                 showMessage("登陆成功！");
                 dispose();

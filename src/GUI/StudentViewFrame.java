@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -30,7 +31,9 @@ public class StudentViewFrame extends JFrame {
         classLabel.setText(student.getClassNum());
         contentTableModel = new ContentTableModel();
         contentTable.setModel(contentTableModel);
-
+        for (MouseListener listener : contentTable.getTableHeader().getMouseListeners()) {
+            contentTable.getTableHeader().removeMouseListener(listener);
+        }
         AddSubjectAction addSubjectAction = new AddSubjectAction();
         addSubjectButton.addActionListener(addSubjectAction);
 
@@ -111,7 +114,8 @@ public class StudentViewFrame extends JFrame {
             String selected_sub = (String) JOptionPane.showInputDialog(framePnl, msg, title,
                     JOptionPane.PLAIN_MESSAGE, null,
                     availableSubject, availableSubject[0]);
-
+            if (selected_sub == null)
+                return;
             putValue("selected_sbj", selected_sub.split(" ")[0]);
             student.addSubject(Subject.getSubject((String) getValue("selected_sbj")));
             contentTableModel.updateList();
